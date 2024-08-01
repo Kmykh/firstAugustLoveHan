@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carta</title>
+  <link rel="stylesheet" href="./style2.css">
+  <style>
+
+      body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    font-family: Arial, sans-serif;
+  }
+
+  .loading-message {
+    text-align: center;
+        font-size: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        margin-top: 20px;
+  }
+
+  h1 {
+    margin: 0;
+    color: #333; /* Color del título */
+    font-size: 24px; /* Tamaño del título */
+    font-family: 'Courier New', Courier, monospace;
+  }
+      .letter {
+        width: 80%;
+        margin: 50px auto;
+        font-size: 18px;
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #f9f9f9;
+        border: 2px solid #000;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 1s, opacity 1s;
+        transform: scale(0.5);
+        opacity: 0;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .letter.visible {
+        transform: scale(1);
+        opacity: 1;
+      }
+  </style>
+</head>
+<body>
+  <div class="loading-message" id="loading-message">
+    <br>Cargando...
+  </div>
+  
+  <h1 style="margin-top: 50px; text-align: center;">Carta de Tatito</h1>
+  <div class="letter" id="letter" style="display: none;">
+    Querida Pingui,<br><br>
+
+    Cuando estés leyendo esto, seguramente estés en la cama. Quiero decirte cosas que siempre salen de mi corazón. Cuando te miro a los ojos, siento que eres la persona que siempre he buscado. Mi corazón está tranquilo a tu lado. Cuando me abrazas, cuando me besas, cuando me dices que me amas, siento que soy la persona más afortunada del mundo.
+    
+    Todas las mañanas me despierto y me pregunto: ¿cómo lo logré? ¿Cómo puedo tener a una persona tan hermosa por fuera y tan fabulosa por dentro? Amo cada parte de ti: tus actitudes, tus gestos, tus palabras, tus caricias, tus besos, tus abrazos, tus risas, tus llantos, tus enojos, tus celos, tus miedos, tus sueños, tus metas, tus logros, y tus fracasos.
+    
+    Siendo sincero, siempre me he sentido solo. Siempre tuve ese pensamiento de que nunca llegaría a amar a alguien tan profundamente. Yo mismo sé que cometí errores, pero desde que conocí esa percepción de mí mismo como un error o me desahogaba físicamente de mil maneras, tú logras calmar mi corazón. Logras frenar la tormenta en mí. Eres mi rayito de sol, y por eso quiero que cuando leas esto, pongas una gran sonrisa. Una sonrisa que ilumine tu rostro, tu corazón, tu alma, y tu vida, porque para mí, tu sonrisa ilumina mi alma.
+    
+    Sé que somos jóvenes y que muchos prometen cosas que al final no cumplen, pero tú, Hanna, significas mucho en mi vida. Significas amor, felicidad, paz, tranquilidad, vida y eres mi hogar. Después de mucho tiempo a tu lado, me siento feliz. Me enseñas, y cada momento contigo, incluso acompañando a Ricardo a la escuela, es especial porque estás ahí. Tú le das vida a mi vida, sentido a mi vida, amor a mi vida, felicidad a mi vida, paz a mi vida, y tranquilidad a mi vida.
+    
+    Te acompañaré a todos lados porque nuestra historia recién comienza. Nuestra historia es única, especial, llena de amor, felicidad, paz, tranquilidad y vida. Me quedo pensando que soy muy feliz a tu lado, eres una chica única e inigualable. Te debo una vida, todo mi amor, mi mente. Contigo quiero llegar a casarme y formar una familia.
+    
+    ¿Te extraño? Sí, a diario. ¿Te pienso? Sí, a diario. ¿Te amo? Sí, a diario. ¿Te necesito? Sí, a diario. ¿Te quiero? Sí, a diario. ¿Te deseo? Sí, a diario. Quiero que recuerdes cuánto te amo. Limpiaré cada lágrima de tus ojos. A veces estaremos en las malas o en las buenas, pero quiero que no se te olvide: sea quien sea que interfiera entre nosotros, yo te elegiré a ti, como esa noche en Huancayo cuando te regalé girasoles tejidos tan especial, porque estabas tú, y siempre voy a decir que nací para amarte, esa noche es muy especial para mí, porque ahí es donde mi corazón te eligió sin darme cuenta, pase lo que pase siempre querré tu felicidad.
+    
+    No quiero que vuelvas a sentirte sola, sin nadie que te apoye. Yo estaré ahí para ti, tu mejor amigo, tu novio, tu loquito. Tu corazón es muy importante para mí, es un tesoro. Te amo inmensamente. Te amo de aquí a la luna. Distancia o misión, nada nos va a separar. No voy a negar que te voy a extrañar cuando vayas a la universidad. Otra vez me toca llorar y sí, soy llorón contigo. Sabes que no soy de llorar, pero cada vez que pensaba en si estabas bien o estabas mal, una lágrima salía de mi ojo.
+    
+    Te amo con intensidad. Sigámonos eligiendo y siendo directos. Contigo quiero todo. Este chico que desconfía de todos y de cualquier persona, medio celosito, hay que decirlo, y un poco posesivo, pero te ama. Sé que no seré perfecto y pueden pasar muchas cosas, pero yo te elegiré siempre.
+    
+    Mi vida, mi curita al corazón.
+  </div>
+
+  <audio id="background-music" src="Maria Becerra - DESAFIANDO EL DESTINO (Official Video).mp3" preload="auto"></audio>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const letter = document.getElementById("letter");
+      const loadingMessage = document.getElementById("loading-message");
+
+      // Mostrar el mensaje de carga y ocultar la carta al principio
+      letter.style.display = "none";
+      loadingMessage.style.display = "block";
+
+      // Después de 1 segundo, ocultar el mensaje de carga y mostrar la carta
+      setTimeout(() => {
+        loadingMessage.style.display = "none";
+        letter.classList.add("visible");
+        letter.style.display = "block";
+      }, 1000);
+
+      // Reproducir la música
+      const music = document.getElementById("background-music");
+      music.currentTime = 51; // Ajusta el tiempo si es necesario
+      music.play();
+    });
+  </script>
+</body>
+</html>
